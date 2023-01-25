@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/estilos/normalize.css">
+    <link rel="stylesheet" href="estilos/login_estilos.css">
+    <title>Proyecto - Jeison Rosario</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Red <span>Social</span></h1>
+        <div class="form_login_contenedor">
+
+            <!-- Envia la informacion introducida a "verificar.php"
+            Verificaque que la informacion coincida con una fila en la base de datos
+            Falta agregar mas verificaciones del lado del servidor y en el cliente-->
+            <form action="servidor/verificar.php" method="post" class="form_login">
+
+                <div class="username_input">
+                    <label for="user">Ingrese: Usuario</label>
+                    <input type="text" name="user" id="user">
+                </div>
+    
+                <div class="pass_input">
+                    <label for="pass">Ingrese: Contreaseña</label>
+                    <input type="password" name="pass" id="pass">
+                </div>
+    
+                <button type="submit">Loguear</button>
+            </form>
+            <div class="class_btn_register">
+                <button class="btn_register"><a href="register.html">Registrarte!</a></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

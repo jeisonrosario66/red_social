@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20vh 0 0 0;
+}
+
+.container h1 span {
+    color: red;
+}
+
+.form_login_contenedor {
+    width: 400px;
+    background-color: rgb(232, 232, 232);
+    border-radius: 5px;
+    border: 1px solid  rgb(135, 135, 135);
+}
+.form_login_contenedor .form_login {
+    display: flex;
+    flex-direction: column;
+    padding: 20px ;
+}
+
+.form_login button,
+.btn_register {
+    height: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+.form_login button:hover {
+    background: rgb(241, 144, 144);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+.form_login button a {
+    text-decoration: none;
+    color: #000;
+}
+
+.form_login div,
+.form_login button {
+    margin: 0 0 20px 0;
+}
+
+.form_login .username_input input,
+.form_login .pass_input input {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.class_btn_register {
+    text-align: center;
+    margin: 0 0 15px 0;
+}
+
+

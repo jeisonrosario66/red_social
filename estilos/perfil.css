@@ -1,0 +1,21 @@
+.cuerpo_perfil {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.cuerpo_perfil ul li    {
+    list-style: none;
+    line-height: 30px;
+    
+}
+
+.perfil_descripcion {
+    display: flex;
+}
+
+.perfil_descripcion img {
+    width: 400px;
+    margin: 0 10px 10px 0;
+    border-radius: 10px;
+}

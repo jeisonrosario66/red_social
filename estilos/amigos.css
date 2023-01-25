@@ -1,0 +1,31 @@
+.container_amigo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 85vw;
+    height: 70vh;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: rgb(189, 253, 199);
+    border-radius: 5px;
+}
+
+.card_amigo {
+    display: flex;
+    border: 1px solid #000;
+    padding: 10px;
+    margin: 0 0 30px 0;
+    width: 40%;
+
+}
+
+.card_amigo img {
+    width: 70px;
+    border-radius: 50%;
+}
+
+.card_amigo ul li {
+    margin: 0 0 0 10px;
+    list-style: none;
+    line-height:  22px;
+}
