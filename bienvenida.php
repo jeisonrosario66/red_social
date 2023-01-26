@@ -10,29 +10,24 @@ if(!isset($sesion)) {
     </script>
     ';
 };
-
-$query_info = "SELECT * FROM usuario where user_name='$sesion'";
+# Devulve la informacion del usuario
+$query_info = "SELECT foto,nombre,apellido FROM usuario where user_name='$sesion'";
 $query_result = mysqli_query($conex, $query_info);
-
 /*if ($query_result) {
     # retorna el numero de  filas encontradas
     $rowcount=mysqli_num_rows($query_result);
     printf("Resultado: %d Registros.\n",$rowcount);
 };*/
-
-
 if (mysqli_num_rows($query_result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($query_result)) {
-        $id = $row["id_usuario"];
-        $username = $row["user_name"];
+        $foto_perfil = $row["foto"];
         $nombre = $row["nombre"];
         $apellido = $row["apellido"];
     }
   } else {
     echo "0 results";
   };
-
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +55,7 @@ if (mysqli_num_rows($query_result) > 0) {
                 </form>
               </div>
             <div class="perfil">
-                <img src="recursos/imgs/perfil_mscln.png" alt="foto_perfil">
+                <img src="<?php echo $foto_perfil; ?>" alt="perfil: <?php echo "$nombre $apellido"; ?>">
                 <p><?="$nombre $apellido";?></p>
             </div>
         </header>

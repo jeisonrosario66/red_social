@@ -10,29 +10,23 @@ if(!isset($sesion)) {
     </script>
     ';
 };
-$query_info_propia = "SELECT user_name, nombre, apellido FROM usuario
+# query para obener la informacion del usuario
+$query_info_propia = "SELECT foto, user_name, nombre, apellido FROM usuario
 WHERE user_name='$sesion'";
-$query_info = "SELECT * FROM usuario";
-$query_info_2 = "SELECT nombre, apellido FROM usuario";
-$query_result_2 = mysqli_query($conex, $query_info_2);
-
-
-
 $query_result_p = mysqli_query($conex, $query_info_propia);
-$query_result = mysqli_query($conex, $query_info);
-
-#echo mysqli_num_rows($query_result);
-
 #obtine los datos propios
 while($row_p = mysqli_fetch_assoc($query_result_p)) {
+    $foto_perfil_p = $row_p["foto"];
     $nombre_propio = $row_p["nombre"];
     $apellido_propio = $row_p["apellido"];
 };
 
-
+$query_info = "SELECT * FROM usuario";
+$query_result = mysqli_query($conex, $query_info);
 # obtiene los datos de otros usuarios
 while($row = mysqli_fetch_assoc($query_result)) {
     $id = $row["id_usuario"];
+    $foto_perfil = $row["foto"];
     $username = $row["user_name"];
     $nombre = $row["nombre"];
     $apellido = $row["apellido"];
@@ -41,6 +35,10 @@ while($row = mysqli_fetch_assoc($query_result)) {
     $fecha_registro = $row["registro_date"];
 };
 
+$query_info_2 = "SELECT foto, nombre, apellido FROM usuario WHERE user_name != '$sesion'";
+$query_result_2 = mysqli_query($conex, $query_info_2);
+
+$p="$foto_perfil_p";
 ?>
 
 
@@ -68,19 +66,23 @@ while($row = mysqli_fetch_assoc($query_result)) {
                 </form>
               </div>
             <div class="perfil">
-                <img src="../recursos/imgs/perfil_mscln.png" alt="foto_perfil">
+                <img src='../<?php echo $foto_perfil_p; ?>' alt="Foto perfil">
                 <p><?="$nombre_propio $apellido_propio";?></p>
             </div>
         </header>
         
         <div class="cuerpo">
+            # Crea un bucle donde se muestras los datos seleccionados de otros usuario
+            #Funciones pendientes
+            # ver el perfik
+            # agregar como amigo
+            # indicador de estado conectado/desconectado
             <div class="container_amigo">
                 <p>Usuarios en la Red (<?php echo mysqli_num_rows($query_result_2);?>)</p>
                 <?php
                     while($row=mysqli_fetch_assoc($query_result_2)) { ?>
                         <div class="card_amigo">
-                            
-                            <img src="../recursos/imgs/perfil_mscln.png" alt="perfil red social">
+                            <img src="../<?php echo $row['foto']; ?>" alt="perfil red social">
                             <ul>
                                 <li><?php echo $row["nombre"]." ".$row["apellido"]; ?></li>
                                 <li>Ver Perfil </li>

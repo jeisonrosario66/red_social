@@ -10,8 +10,8 @@ if(!isset($sesion)) {
     </script>
     ';
 };
-# primera consulta para obtener datos del usuario (foto ,nombre, apellido, edad)
-#la edad se optiene a traves de la fecha de nacimiento aplicando una formula
+
+#Recolecta la info del usario
 $query_info_propia = "SELECT foto, nombre, apellido,
 YEAR(CURDATE())-YEAR(fecha_nacimiento) + 
 IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(fecha_nacimiento,'%m-%d'), 0 , -1 ) 
@@ -22,19 +22,27 @@ while($row_p = mysqli_fetch_assoc($query_result_p)) {
     $foto = $row_p["foto"];
     $nombre_propio = $row_p["nombre"];
     $apellido_propio = $row_p["apellido"];
+   # $fecha_nacimiento_p = $row_p["fecha_nacimiento"];
+   # $fecha_registro_p = $row_p["registro_date"];
     $edad_p = $row_p["edad_p"];
 };
-# segundo query para obtener el nombre del pais donde reside el usuario
-# Manenjando las tablas recionales
-$query_info_propia_2 = "SELECT pais_nombre  
-    FROM usuario    
-	LEFT JOIN pais ON pais.id_pais = usuario.pais_id
-    WHERE user_name = '$sesion'";
-$query_result_p_2 = mysqli_query($conex, $query_info_propia_2);
-while($row_p = mysqli_fetch_assoc($query_result_p_2)) {
-    $pais = $row_p["pais_nombre"];
-};
+
+#Devuelve la info de los paises
+$query_paises = "SELECT id_pais, pais_nombre FROM pais";
+$query_paises_result = mysqli_query($conex, $query_paises);
+
+$query_estado = 'SELECT pais_nombre, estado_nombre
+    FROM estado
+	LEFT JOIN pais ON pais.id_pais = estado.pais_id
+	WHERE pais_nombre = ""';
+
+$query_estado_2 = "SELECT estado_nombre
+    FROM estado
+    WHERE pais_id = 1";
+
+$query_estado_2_result = mysqli_query($conex, $query_estado_2);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,10 +50,10 @@ while($row_p = mysqli_fetch_assoc($query_result_p_2)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../estilos/estilos.css">
-    <link rel="stylesheet" href="../estilos/perfil.css">
+    <link rel="stylesheet" href="../../estilos/estilos.css">
+    <link rel="stylesheet" href="../../estilos/perfil.css">
 
-    <title>Red Social - Amigos</title>
+    <title>Red Social -Editar Perfil</title>
 </head>
 <body>
 <div class="container">
@@ -62,39 +70,49 @@ while($row_p = mysqli_fetch_assoc($query_result_p_2)) {
               </div>
         </header>
         <div class="cuerpo">
-            <!-- 
-            Funciones pendientes por agregar
-                .Verificar amistad
-                .Verificar mensajes
-                .mejorar mecanismos para actualizar el perfil
-                ....
-             -->
+
             <div class="cuerpo_perfil">
                 <div class="perfil_descripcion">
-                    <img src="../<?php echo $foto; ?>" alt="foto perfil: <?php echo "$nombre_propio $apellido_propio"; ?>">
+                    <img src="../../<?php echo $foto; ?>" alt="foto perfil: <?php echo $nombre_propio." ".$apellido_propio; ?>">
                     <p>Descripcion Breve: Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Nisi recusandae cumque a tempore sapiente labore dolorum architecto rem 
                     tenetur debitis assumenda maiores adipisci,
                     earum molestias amet repudiandae reiciendis vero dicta.</p>
                 </div>
+                <form action="../../servidor/edit_perfil_servidor.php" method="post" enctype="multipart/form-data">
                 <ul>
-                    <li><?php echo "$nombre_propio $apellido_propio"?></li>
-                    <li>Edad: <?php echo $edad_p; ?></li>
-                    <li>Ubicacion: <?php echo $pais; ?></li>
+                    <input type="file" accept="image/png, image/jpeg" name="foto_perfil">
+                    <li><?php echo $nombre_propio." ".$apellido_propio ?></li>
+                    <li>Edad:   </li>
+                    <li>ubicacion: </li>
+
+                    <select name="pais" id="pais_select">
+                        <option value="">Pais</option>
+                        <?php
+                            while($row = mysqli_fetch_assoc($query_paises_result)) { ?>
+                            <option value="<?php echo $row["id_pais"]; ?>">
+                                <?php echo $pais = $row["pais_nombre"]; ?>
+                            </option>
+                            <?php }
+                            var_dump($pais);
+                            mysqli_free_result($query_paises_result);?>
+                    </select>
                     <li>Son amigos?</li>
                     <li>Enviar Mensaje</li>
                     <li>Sus publicaciones</li>
                 </ul>
-                <button><a href="edit_perfil.php/">Editar perfil</a></button>
+                <button type="submit">Actualizar</button>
+                </form>
+
             </div>
 
             <!-- Menu lateral Con varias opciones -->
             <aside class="lateral">
                 <h2>Menu</h2>
                 <ul>
-                    <li><a href="../bienvenida.php">Inicio</a></li>
+                    <li><a href="../../bienvenida.php">Inicio</a></li>
                     <li>Perfil</li>
-                    <li><a href="amigos.php">Amigos</a></li>
+                    <li><a href="../amigos.php">Amigos</a></li>
                     <li>Configuraciones</li>
                 </ul>
                 <p><a href="../servidor/cerrar_sesion.php">Cerrar sesión</a></p>
@@ -113,3 +131,4 @@ while($row_p = mysqli_fetch_assoc($query_result_p_2)) {
     
 </body>
 </html>
+

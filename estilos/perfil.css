@@ -2,12 +2,19 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+    background-color: rgb(189, 253, 199);
 }
 
 .cuerpo_perfil ul li    {
     list-style: none;
     line-height: 30px;
-    
+}
+
+.cuerpo_perfil button {
+    width: 200px;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 20px;
 }
 
 .perfil_descripcion {
@@ -18,4 +25,10 @@
     width: 400px;
     margin: 0 10px 10px 0;
     border-radius: 10px;
+    border: 1px solid #000;
+} 
+
+.perfil_descripcion p {
+    width: 400px;
 }
+

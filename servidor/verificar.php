@@ -7,6 +7,8 @@ $usuario = $_POST['user'];
 $password = $_POST['pass'];
 
 #consulta a base de datos
+# funciones pendites por agregar
+# Auntenticacion con correo/usario
 $query_login = "SELECT user_name, password FROM usuario where user_name='$usuario' 
 and password='$password'";
 
