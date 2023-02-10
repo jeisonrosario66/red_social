@@ -72,11 +72,11 @@ $p="$foto_perfil_p";
         </header>
         
         <div class="cuerpo">
-            # Crea un bucle donde se muestras los datos seleccionados de otros usuario
+            <!-- # Crea un bucle donde se muestras los datos seleccionados de otros usuario
             #Funciones pendientes
             # ver el perfik
             # agregar como amigo
-            # indicador de estado conectado/desconectado
+            # indicador de estado conectado/desconectado -->
             <div class="container_amigo">
                 <p>Usuarios en la Red (<?php echo mysqli_num_rows($query_result_2);?>)</p>
                 <?php

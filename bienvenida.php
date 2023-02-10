@@ -39,86 +39,88 @@ if (mysqli_num_rows($query_result) > 0) {
     <title>Proyecto - Jeison Rosario</title>
     <link rel="stylesheet" href="estilos/estilos.css">
     <link rel="stylesheet" href="/estilos/normalize.css">
-
+    <script src="https://kit.fontawesome.com/a29143056b.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <!-- header Cabezera con informacion sencilla -->
         <header class="cabezera">
-              <!-- Formulario para buscar entre las publicaciones -->
-              <div class="form_busqueda">
-                <form action="#" method="post">
-                    <h1>Red <span style="color: red;" >Social</span></h1>
-                    <label for="">Busqueda</label>
-                    <input type="search" name="busqueda" id="">
-                    <button type="submit">Buscar</button>
-                </form>
-              </div>
-            <div class="perfil">
-                <img src="<?php echo $foto_perfil; ?>" alt="perfil: <?php echo "$nombre $apellido"; ?>">
-                <p><?="$nombre $apellido";?></p>
+            <form action="#" method="post" class="header_buscar">
+                <div style="width: 50px;height: 50px;background: blue;border-radius:15px;"></div>
+                <input type="search" name="" id="" placeholder="Buscar">
+            </form>
+            <div class="header_secciones">
+                <a href="#">Inicio<i class="fa-solid fa-house"></i></a>
+                <a href="#">Usuarios<i class="fa-solid fa-users"></i></a>
+                <a href="#">Mensajes<i class="fa-solid fa-message"></i></a>
+                <a href="#">Notificaciones<i class="fa-solid fa-bell"></i></a>
+                <div class="header_perfil">
+                    <img src="<?php echo $foto_perfil; ?>" alt="perfil: <?php echo "$nombre $apellido"; ?>">
+                    <p>Yo</p>
+                </div>
             </div>
         </header>
         
         <div class="cuerpo">
+            <aside class="lateral">
+                <div class="lateral_1">
+                    <div class="ltr_perfil">
+                        <img src="#" alt="Perfil">
+                        <p>Nombre Completo</p>
+                        <p>Alguna otra informacion</p>
+                    </div>
+                    <div class="ltr_contacto">
+                        <p>Amigos   #</p>
+                        <p>Conoce mas amigos</p>
+                    </div>
+                </div>
+            </aside>
             <!-- contenido de las publicaciones -->
             <!-- Posteriormente conectar con una 
             tabla donde se almacenen los post de otros usuarios -->
-            <article class="contenido">
-                <h2>Publicaciones</h2>
-                <article>
-                    <h3>Articulo: Titulo</h3>
-                    <p>Vista previa del post: Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Quaerat harum beatae nesciunt ducimus. Illo provident possimus dolorum, 
-                        aliquid exercitationem aspernatur impedit qui harum cumque esse sequi et soluta iure totam.
-                        <p>Usuario</p>
-                        <p>Comentarios #</p>
-                        <p>Fecha Publicacion</p>
-                    </p>
-                </article>
-                <article>
-                    <h3>Articulo: Titulo</h3>
-                    <p>Vista previa del post: Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Quaerat harum beatae nesciunt ducimus. Illo provident possimus dolorum, 
-                        aliquid exercitationem aspernatur impedit qui harum cumque esse sequi et soluta iure totam.
-                        <p>Usuario</p>
-                        <p>Comentarios #</p>
-                        <p>Fecha Publicacion</p>
-                    </p>
-                </article>
-                <article>
-                    <h3>Articulo: Titulo</h3>
-                    <p>Vista previa del post: Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Quaerat harum beatae nesciunt ducimus. Illo provident possimus dolorum, 
-                        aliquid exercitationem aspernatur impedit qui harum cumque esse sequi et soluta iure totam.
-                        <p>Usuario</p>
-                        <p>Comentarios #</p>
-                        <p>Fecha Publicacion</p>
-                    </p>
-                </article>
-                <article>
-                    <h3>Articulo: Titulo</h3>
-                    <p>Vista previa del post: Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Quaerat harum beatae nesciunt ducimus. Illo provident possimus dolorum, 
-                        aliquid exercitationem aspernatur impedit qui harum cumque esse sequi et soluta iure totam.
-                        <p>Usuario</p>
-                        <p>Comentarios #</p>
-                        <p>Fecha Publicacion</p>
-                    </p>
-                </article>
-            </article>
 
+            <div class="contenido">
+                <div class="ctnd_header">
+                    <div class="ctnd_header_lv1">
+                        <form action="#" method="post">
+                            <img src="#" alt="Foto Perfil">
+                            <input type="search" name="Crear publicacion" id="">
+                        </form>
+                    </div>
+                    <div class="ctnd_header_lv2">
+                        <p>Archivo</p>
+                        <p>Video</p>
+                        <p>Publicar</p>
+                    </div>
+                    <div class="ctnd_separador"></div>
+                    <div class="ctnd_card_container">
+                        <p>Nombre Autor</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                        <div class="ctnd_separador"></div>
+                        <p>Texto</p>
+                        <div class="ctnd_imagen_publicacion"></div>
+                        <div class="ctnd_valoraciones">
+                            <p>Like</p>
+                            <p>Dislike</p>
+                            <p>Comentarios</p>
+                        </div>
+                        <div class="ctnd_separador"></div>
+                        <div class="ctnd_opciones">
+                            <p><i class="fa-solid fa-thumbs-up"></i>Me gusta</p>
+                            <p><i class="fa-solid fa-thumbs-up"></i>No me gusta</p>
+                            <p><i class="fa-solid fa-comment"></i>Comentar</p>
+                            <p><i class="fa-solid fa-paper-plane"></i></i>Enviar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="footer">
+                <div class="ftr_1">
+                    <p>Alguna inaformacion</p>
+                </div>
+            </footer>
             <!-- Menu lateral Con varias opciones -->
-            <aside class="lateral">
-                <h2>Menu</h2>
-                <ul>
-                    <li>Inicio</li>
-                    <li><a href="pages/perfil.php">Perfil</a></li>
-                    <li><a href="pages/amigos.php">Amigos</a></li>
-                    <li>Configuraciones</li>
-                </ul>
-                <p><a href="servidor/cerrar_sesion.php">Cerrar sesión</a></p>
-            </aside>
         </div>
 
         <footer>
