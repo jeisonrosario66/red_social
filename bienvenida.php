@@ -46,7 +46,7 @@ if (mysqli_num_rows($query_result) > 0) {
         <!-- header Cabezera con informacion sencilla -->
         <header class="cabezera">
             <form action="#" method="post" class="header_buscar">
-                <div style="width: 50px;height: 50px;background: blue;border-radius:15px;"></div>
+                <div class="icon_logo"></div>
                 <input type="search" name="" id="" placeholder="Buscar">
             </form>
             <div class="header_secciones">
@@ -56,22 +56,24 @@ if (mysqli_num_rows($query_result) > 0) {
                 <a href="#">Notificaciones<i class="fa-solid fa-bell"></i></a>
                 <div class="header_perfil">
                     <img src="<?php echo $foto_perfil; ?>" alt="perfil: <?php echo "$nombre $apellido"; ?>">
-                    <p>Yo</p>
+                    <p>Yo<i class="fa-solid fa-bars"></i></p>
                 </div>
             </div>
         </header>
-        
-        <div class="cuerpo">
+        <div class="header_perfil_opcs">
+        <a href="servidor/cerrar_sesion.php">Cerrar sesión</a>
+        </div>
+        <div class="cuerpo" >
             <aside class="lateral">
                 <div class="lateral_1">
                     <div class="ltr_perfil">
-                        <img src="#" alt="Perfil">
-                        <p>Nombre Completo</p>
-                        <p>Alguna otra informacion</p>
+                        <img src="<?php echo $foto_perfil; ?>" alt="perfil: <?php echo "$nombre $apellido"; ?>">
+                        <p class="nombre"><?php echo "$nombre $apellido"; ?></p>
                     </div>
+                    <div class="ctnd_separador"></div>
                     <div class="ltr_contacto">
-                        <p>Amigos   #</p>
-                        <p>Conoce mas amigos</p>
+                        <p>Amigos #</p>
+                        <p>Conoce amigos</p>
                     </div>
                 </div>
             </aside>
@@ -80,57 +82,56 @@ if (mysqli_num_rows($query_result) > 0) {
             tabla donde se almacenen los post de otros usuarios -->
 
             <div class="contenido">
-                <div class="ctnd_header">
-                    <div class="ctnd_header_lv1">
-                        <form action="#" method="post">
-                            <img src="#" alt="Foto Perfil">
-                            <input type="search" name="Crear publicacion" id="">
-                        </form>
+                    <div class="ctnd_header">
+                        <div class="ctnd_header_lv1">
+                            <form action="#" method="post">
+                                <img src="<?php echo $foto_perfil; ?>" alt="perfil: <?php echo "$nombre $apellido"; ?>">
+                                <input type="search" placeholder="Crear publicacion" id="">
+                            </form>
+                        </div>
+                        <div class="ctnd_header_lv2">
+                            <p><i class="fa-regular fa-image" style="color:#41b2df;"></i>Foto</p>
+                            <p><i class="fa-solid fa-video" style="color:#109744;"></i>Video</p>
+                            <p><i class="fa-solid fa-arrow-right" style="color:#b6781a;"></i>Publicar</p>
+                        </div>
                     </div>
-                    <div class="ctnd_header_lv2">
-                        <p>Archivo</p>
-                        <p>Video</p>
-                        <p>Publicar</p>
-                    </div>
+
                     <div class="ctnd_separador"></div>
                     <div class="ctnd_card_container">
-                        <p>Nombre Autor</p>
-                        <i class="fa-solid fa-ellipsis"></i>
+                        <div class="info_autor">
+                            <div class="img_autor"></div>
+                            <p class="nombre_autor">Nombre Autor</p>
+                            <i class="fa-solid fa-ellipsis opcs"></i>
+                        </div>
                         <div class="ctnd_separador"></div>
                         <p>Texto</p>
                         <div class="ctnd_imagen_publicacion"></div>
                         <div class="ctnd_valoraciones">
-                            <p>Like</p>
-                            <p>Dislike</p>
-                            <p>Comentarios</p>
+                            <p>Like #</p>
+                            <p>Dislike #</p>
+                            <p>Comentarios #</p>
                         </div>
                         <div class="ctnd_separador"></div>
                         <div class="ctnd_opciones">
                             <p><i class="fa-solid fa-thumbs-up"></i>Me gusta</p>
-                            <p><i class="fa-solid fa-thumbs-up"></i>No me gusta</p>
+                            <p><i class="fa-solid fa-thumbs-up" style="    transform: rotate(180deg);"></i>No me gusta</p>
                             <p><i class="fa-solid fa-comment"></i>Comentar</p>
                             <p><i class="fa-solid fa-paper-plane"></i></i>Enviar</p>
                         </div>
                     </div>
-                </div>
             </div>
             
             <footer class="footer">
                 <div class="ftr_1">
                     <p>Alguna inaformacion</p>
+                    <p>Proyecto Red social.
+                        Escrito por <a href="#">Jeison Rosario.</a>
+                        Desarrollador Junior.
+                        Estudiante Platzi
+                    </p>
                 </div>
             </footer>
-            <!-- Menu lateral Con varias opciones -->
         </div>
-
-        <footer>
-            <p>Proyecto Red social.
-                Escrito por <a href="#">Jeison Rosario.</a>
-                Desarrollador Junior.
-                Estudiante Platzi
-            </p>
-        </footer>
-
     </div>
 </body>
 </html>
