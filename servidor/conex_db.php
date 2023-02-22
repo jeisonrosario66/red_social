@@ -5,7 +5,6 @@ $Username = "root";
 $Password = "root";
 $NameBD = "red_social";
 
-
 // Creamos la conexión con MySQL
 $conex = mysqli_connect($ServerName, $Username, $Password, $NameBD);
 mysqli_set_charset($conex, "utf8"); 
